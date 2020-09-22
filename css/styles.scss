@@ -1,3 +1,5 @@
+@import "colors";
+
 * { /* Gælder alt på hele siden */
   box-sizing: border-box; /* Bokse har altid den størrelse man giver uanset om der tilføjes margen, padding mv. */
 }
@@ -6,6 +8,7 @@
 
 body {
   margin: 0; /* Ingen kanter i siden af browser */
+  background: $background;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,4 +36,43 @@ img {
   display: block; /* Billeder er et element (laver linjeskift) */
   max-width: 100%; /* Bredde må maks fylde 100% */
   height: auto; /* Højden skal tilpasse sig */
+}
+
+@mixin quicktransition($seconds: 1s) {
+  -webkit-transition: all $seconds ease-in-out;
+  -moz-transition: all $seconds ease-in-out;
+  -o-transition: all $seconds ease-in-out;
+  transition: all $seconds ease-in-out;
+}
+
+
+.somebox{
+  display: flex;
+}
+.someitem {
+  display: flex;
+  width: 170px;
+  border-radius: 10px;
+  height: 100px;
+  background: $primaryCol;
+  color: $baseColor;
+  font-size: 23px;
+  margin: 20px;
+  padding: 34px 20px;
+  @include quicktransition;
+
+  a {
+    text-decoration: none;
+  }
+  p {
+    padding-top: 5px;
+  }
+  i {
+    padding-left: 40px;
+    font-size: 37px;
+  }
+  &hover {
+    background: $supportCol2;
+    @include quicktransition;
+  }
 }
